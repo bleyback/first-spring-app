@@ -1,10 +1,14 @@
 package com.informaticonfig.spring.firstapp.firtspringapp.Controllers;
 
 import org.springframework.web.bind.annotation.RestController;
+
+import com.informaticonfig.spring.firstapp.firtspringapp.Models.Empleados;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 
@@ -12,13 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/rest")
 public class RestControler {
     
-    @GetMapping("/info")
+    @RequestMapping(path="/info", method=RequestMethod.GET)
     public Map<String, Object> getMap(){
+        // Crear un objeto de la clase Empleados y agregarlo a un mapa
+        Empleados empleado = new Empleados("Samuel", "Godoy", "Backend Developer", 21, 1, 10000);
         Map<String, Object> map = new HashMap<>();
-        map.put("name", "Samuel");
-        map.put("age", 21);
-        map.put("city", "Guadalajara");
-        map.put("state", "Jalisco");
+        map.put("Empleado", empleado);
         
         return map;
     }
